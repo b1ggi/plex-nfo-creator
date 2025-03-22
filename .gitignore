@@ -1,0 +1,61 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+wheelhouse/
+pip-wheel-metadata/
+share/python-wheels/
+
+# PyInstaller
+*.spec
+
+# Test reports and coverage
+htmlcov/
+.tox/
+.nox/
+coverage*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+
+# Logs
+*.log
+
+# VS Code settings
+.vscode/
+
+# IDEs and editors
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
