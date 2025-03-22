@@ -88,7 +88,6 @@ Logs are written to `plex_nfo_creator.log` in the project directory.
 
 ![image](https://github.com/user-attachments/assets/2f40fa36-e6f5-4bd0-afb0-460b492d2bb4)
 
-
 ## Troubleshooting
 
 - Verify your Plex token and server URL.
