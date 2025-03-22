@@ -84,6 +84,11 @@ python plex_nfo_creator.py --url http://192.168.0.1:32400 --token my_plex_token 
 
 Logs are written to `plex_nfo_creator.log` in the project directory.
 
+## Screenshot
+
+![image](https://github.com/user-attachments/assets/2f40fa36-e6f5-4bd0-afb0-460b492d2bb4)
+
+
 ## Troubleshooting
 
 - Verify your Plex token and server URL.
