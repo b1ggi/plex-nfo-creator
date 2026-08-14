@@ -10,8 +10,8 @@ This accomplishes the following mentioned in the Jellyfin Docs: [Jellyfin local 
 
 ```You can also use your .nfo files to help Jellyfin identify your media. You can just enter an IMDb, TMDb or TVDb link, to link the media to the specific provider id.```
 
-> **⚠️ Warning:** This program is to be used at your own risk.  
-> Before using your real movies folder, please test on an overlay file storage (or similar safe environment) as advised by your preferred AI.  
+> **⚠️ Warning:** This program is to be used at your own risk.  It was created by an AI for my personal use. 
+> Before using your real movies folder, please test on an overlay file storage (or similar safe environment).  
 > The author is not liable for any data loss.
 
 ## Features
