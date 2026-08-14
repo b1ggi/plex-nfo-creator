@@ -1,3 +1,5 @@
+
+
 # Plex IMDb/TMDb/TVDB NFO Creator
 
 A Python script to generate NFO files for movies and TV shows from Plex metadata.  
@@ -40,7 +42,10 @@ This accomplishes the following mentioned in the Jellyfin Docs: [Jellyfin local 
 
    ```bash
    python -m venv venv
+   # Windows
    venv\Scripts\activate
+   # macOS/Linux
+   source venv/bin/activate
    ```
 
 3. **Install dependencies:**
