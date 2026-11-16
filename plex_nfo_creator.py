@@ -417,15 +417,15 @@ def process_library(plex, library_name, library_type, root_path, dry_run=False):
             # Get IDs
             ids, method = get_ids(item, library_type)
             
-            # Track method used
-            if method == "primary":
-                primary_count += 1
-            else:
-                secondary_count += 1
-            
             # Create NFO file if we have at least one ID
             has_id = ids['imdb'] or (ids['tmdb'] and library_type == 'movie') or (ids['tvdb'] and library_type == 'tv')
             if has_id:
+                # Track method used (but only if we actually succeeded)
+                if method == "primary":
+                    primary_count += 1
+                else:
+                    secondary_count += 1
+
                 if create_nfo_file(item_path, ids, library_type, root_path, dry_run):
                     success_count += 1
                 else:
