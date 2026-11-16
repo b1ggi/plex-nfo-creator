@@ -90,16 +90,22 @@ def get_ids(item, item_type):
     
     try:
         # Method 1: Extract from guids
+        guids = []
         if hasattr(item, 'guids') and item.guids:
-            for guid in item.guids:
-                guid_id = guid.id.lower() if hasattr(guid, 'id') else str(guid).lower()
-                
-                if 'imdb://' in guid_id:
-                    ids['imdb'] = guid_id.split('imdb://')[1].split('?')[0]
-                elif 'tmdb://' in guid_id and item_type == 'movie':
-                    ids['tmdb'] = guid_id.split('tmdb://')[1].split('?')[0]
-                elif 'tvdb://' in guid_id and item_type == 'tv':
-                    ids['tvdb'] = guid_id.split('tvdb://')[1].split('?')[0]
+            guids = item.guids
+        elif hasattr(item, 'guid') and item.guid:
+            # Some older items have a single `guid` field instead of a list.
+            guids.append(item.guid)
+
+        for guid in guids:
+            guid_id = guid.id.lower() if hasattr(guid, 'id') else str(guid).lower()
+
+            if 'imdb://' in guid_id:
+                ids['imdb'] = guid_id.split('imdb://')[1].split('?')[0]
+            elif 'tmdb://' in guid_id and item_type == 'movie':
+                ids['tmdb'] = guid_id.split('tmdb://')[1].split('?')[0]
+            elif 'tvdb://' in guid_id and item_type == 'tv':
+                ids['tvdb'] = guid_id.split('tvdb://')[1].split('?')[0]
         
         # Method 2: Try to extract from other metadata if needed
         if not (ids['imdb'] or (ids['tmdb'] and item_type == 'movie') or (ids['tvdb'] and item_type == 'tv')):
