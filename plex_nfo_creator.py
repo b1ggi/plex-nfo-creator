@@ -301,6 +301,20 @@ def get_local_path(plex_path, root_path, item_type):
     logger.warning(f"Could not find {plex_path} under {root_path}")
     return plex_path
 
+def gen_nfo_xml(item_type: str, id_type: str, id_value: str):
+    """Create a minimal NFO XML string for a movie or TV show."""
+    if item_type not in {"movie", "show"}:
+        raise ValueError("item_type must be 'movie' or 'show'")
+
+    root_tag = "movie" if item_type == "movie" else "tvshow"
+
+    return (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
+        f"<{root_tag}>\n"
+        f'  <uniqueid type="{id_type}">{id_value}</uniqueid>\n'
+        f"</{root_tag}>"
+    )
+
 def create_nfo_file(plex_path, ids, item_type, root_path, dry_run=False):
     try:
         # Get the appropriate local path
@@ -326,9 +340,9 @@ def create_nfo_file(plex_path, ids, item_type, root_path, dry_run=False):
             
             # Create content with available IDs
             if ids['imdb']:
-                content = f"https://www.imdb.com/title/{ids['imdb']}/"
+                content = gen_nfo_xml('show', 'imdb', ids['imdb'])
             elif ids['tvdb']:
-                content = f"https://thetvdb.com/series/{ids['tvdb']}"
+                content = gen_nfo_xml('show', 'tvdb', ids['tvdb'])
             else:
                 logger.warning(f"No valid ID found for TV show at {local_path}")
                 return False
@@ -350,9 +364,9 @@ def create_nfo_file(plex_path, ids, item_type, root_path, dry_run=False):
             
             # Create content with available IDs
             if ids['imdb']:
-                content = f"https://www.imdb.com/title/{ids['imdb']}/"
+                content = gen_nfo_xml('movie', 'imdb', ids['imdb'])
             elif ids['tmdb']:
-                content = f"https://www.themoviedb.org/movie/{ids['tmdb']}"
+                content = gen_nfo_xml('movie', 'tmdb', ids['tmdb'])
             else:
                 logger.warning(f"No valid ID found for movie at {local_path}")
                 return False
