@@ -104,6 +104,9 @@ def get_ids(item, item_type):
                 ids['imdb'] = guid_id.split('imdb://')[1].split('?')[0]
             elif 'tmdb://' in guid_id and item_type == 'movie':
                 ids['tmdb'] = guid_id.split('tmdb://')[1].split('?')[0]
+            # Plex used to use `themoviedb` instead of `tmdb`:
+            elif 'themoviedb://' in guid_id and item_type == 'movie':
+                ids['tmdb'] = guid_id.split('themoviedb://')[1].split('?')[0]
             elif 'tvdb://' in guid_id and item_type == 'tv':
                 ids['tvdb'] = guid_id.split('tvdb://')[1].split('?')[0]
         
